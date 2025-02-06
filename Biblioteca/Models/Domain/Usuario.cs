@@ -12,7 +12,6 @@ namespace Biblioteca.Models.Domain
         public string Password { get; set; }
 
         [ForeignKey("Roles")]
-
         public int FkRol { get; set; }
         public Rol Roles { get; set; }
     }

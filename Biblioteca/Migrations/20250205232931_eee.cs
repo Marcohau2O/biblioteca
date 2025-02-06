@@ -5,7 +5,7 @@
 namespace Biblioteca.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class eee : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,14 +32,14 @@ namespace Biblioteca.Migrations
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PkRol = table.Column<int>(type: "int", nullable: false)
+                    FkRol = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuario", x => x.PkUsuario);
                     table.ForeignKey(
-                        name: "FK_Usuario_Roles_PkRol",
-                        column: x => x.PkRol,
+                        name: "FK_Usuario_Roles_FkRol",
+                        column: x => x.FkRol,
                         principalTable: "Roles",
                         principalColumn: "PkRol",
                         onDelete: ReferentialAction.Cascade);
@@ -52,13 +52,13 @@ namespace Biblioteca.Migrations
 
             migrationBuilder.InsertData(
                 table: "Usuario",
-                columns: new[] { "PkUsuario", "Nombre", "Password", "PkRol", "UserName" },
-                values: new object[] { 1, "Juan", "salme1", 1, "Salmeroncito" });
+                columns: new[] { "PkUsuario", "FkRol", "Nombre", "Password", "UserName" },
+                values: new object[] { 1, 1, "Marcos", "marcoshau", "MarcosHau" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuario_PkRol",
+                name: "IX_Usuario_FkRol",
                 table: "Usuario",
-                column: "PkRol");
+                column: "FkRol");
         }
 
         /// <inheritdoc />

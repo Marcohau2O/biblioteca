@@ -18,9 +18,9 @@ namespace Biblioteca.Context
                 new Usuario
                 {
                     PkUsuario = 1,
-                    Nombre = "Juan",
-                    UserName = "Salmeroncito",
-                    Password = "salme1",
+                    Nombre = "Marcos",
+                    UserName = "MarcosHau",
+                    Password = "marcoshau",
                     FkRol = 1
                 });
             //Inserta tabla Rol

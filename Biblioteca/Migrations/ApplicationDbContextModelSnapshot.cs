@@ -53,6 +53,9 @@ namespace Biblioteca.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PkUsuario"));
 
+                    b.Property<int>("FkRol")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -61,16 +64,13 @@ namespace Biblioteca.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PkRol")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PkUsuario");
 
-                    b.HasIndex("PkRol");
+                    b.HasIndex("FkRol");
 
                     b.ToTable("Usuario");
 
@@ -78,10 +78,10 @@ namespace Biblioteca.Migrations
                         new
                         {
                             PkUsuario = 1,
-                            Nombre = "Juan",
-                            Password = "salme1",
-                            PkRol = 1,
-                            UserName = "Salmeroncito"
+                            FkRol = 1,
+                            Nombre = "Marcos",
+                            Password = "marcoshau",
+                            UserName = "MarcosHau"
                         });
                 });
 
@@ -89,7 +89,7 @@ namespace Biblioteca.Migrations
                 {
                     b.HasOne("Biblioteca.Models.Domain.Rol", "Roles")
                         .WithMany()
-                        .HasForeignKey("PkRol")
+                        .HasForeignKey("FkRol")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
