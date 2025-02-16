@@ -1,16 +1,16 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
-@model IEnumerable<Biblioteca.Models.Domain.Usuario>
+@model  IEnumerable<Biblioteca.Models.Domain.Rol>
 <h1>
-    Dashoard
+    Dashoard Roles
 </h1>
 
 
 <div class="row">
 
     <div class="offset-10 col-3 mb-3">
-        <a asp-action="Crear" asp-controller="Usuario" class="btn-success mx-auto btn-lg"> <i class="fa-solid fa-user"></i>Nuevo</a>
+        <a asp-action="Crear" asp-controller="Roles" class="btn-success mx-auto btn-lg"> <i class="fa-solid fa-user"></i>Nuevo</a>
     </div>
 </div>
 
@@ -18,7 +18,7 @@
     <div class="offset-12">
         <div class="card border">
             <div class="card-header bg-dark">
-                <h1 class="text-white"><strong>Lista de usuarios</strong></h1>
+                <h1 class="text-white"><strong>Lista de Roles</strong></h1>
 
             </div>
 
@@ -33,11 +33,9 @@
                         <table class="table table-bordered" id="tblUsuarios" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th>@Html.DisplayNameFor(x => x.PkRol) </th>
                                     <th>@Html.DisplayNameFor(x => x.Nombre) </th>
-                                    <th>@Html.DisplayNameFor(x => x.UserName) </th>
-                                    <th>@Html.DisplayNameFor(x => x.Password) </th>
-                                    <th>@Html.DisplayNameFor(x => x.Roles.Nombre) </th>
-                                  
+
                                 </tr>
 
 
@@ -54,16 +52,14 @@
                                     <tr>
 
 
-                                        <td>@Html.DisplayFor(x => Item.Nombre) </td>
-                                        <td>@Html.DisplayFor(x => Item.UserName) </td>
-                                        <td>@Html.DisplayFor(x => Item.Password) </td>
-                                        <td>@Html.DisplayFor(x => Item.Roles.Nombre) </td>
-                                       
+                                            <td>@Html.DisplayFor(x => Item.PkRol) </td>
+                                            <td>@Html.DisplayFor(x => Item.Nombre) </td>
+
                                         <td>
-                                            <a class=" btn btn-warning" asp-action="Editar" asp-route-id="@Item.PkUsuario"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
-                                            <form asp-action="Eliminar" asp-route-id="@Item.PkUsuario" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
+                                            <a class=" btn btn-warning" asp-action="Editar" asp-route-id="@Item.PkRol"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                                            <form asp-action="Eliminar" asp-route-id="@Item.PkRol" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
                                                 <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Eliminar</button>
-                                            </form>
+                                                </form>
                                         </td>
 
                                     </tr>

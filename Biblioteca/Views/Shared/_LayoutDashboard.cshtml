@@ -46,10 +46,10 @@
                     <img src="~/images/user.png" class="img-fluid rounded-circle mb-3" alt="Imagen de usuario" style="width: 150px; height: 150px;" />
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active text-black text-lg-center fs-4" aria-current="page" href="#">Inicio</a>
+                            <a class="nav-link active text-black text-lg-center fs-4" aria-current="page" asp-controller="Usuario" asp-action="Index">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black text-lg-center fs-4" href="#">Perfil</a>
+                            <a class="nav-link text-black text-lg-center fs-4" aria-current="page" asp-controller="Roles" asp-action="IndexRol">Roles</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-black text-lg-center fs-4" href="#">Configuración</a>

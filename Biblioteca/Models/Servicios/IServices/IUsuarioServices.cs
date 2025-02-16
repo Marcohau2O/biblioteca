@@ -8,5 +8,9 @@ namespace Biblioteca.Models.Servicios.IServices
         public bool Create(Usuario req);
 
         public Usuario GetbyId(int id);
+
+        public Usuario Editar(Usuario usuario);
+
+        public bool EliminarUsuario(int id);
     }
 }
