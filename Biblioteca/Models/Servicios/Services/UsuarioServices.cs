@@ -71,6 +71,7 @@ namespace Biblioteca.Models.Servicios.Services
         }
 
         public Usuario Editar(Usuario usuarioEdit)
+        
         {
             try
             {
