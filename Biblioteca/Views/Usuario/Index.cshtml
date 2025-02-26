@@ -61,8 +61,10 @@
                                        
                                         <td>
                                             <a class=" btn btn-warning" asp-action="Editar" asp-route-id="@Item.PkUsuario"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
-                                            <form asp-action="Eliminar" asp-route-id="@Item.PkUsuario" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
-                                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                                            <form asp-action="Eliminar" asp-route-id="@Item.PkUsuario" method="post" class="delete-form">
+                                                <button type="button" class="btn btn-danger" onclick="confirmDelete(this)">
+                                                    <i class="fa-solid fa-trash"></i> Eliminar
+                                                </button>
                                             </form>
                                         </td>
 
@@ -96,31 +98,26 @@
 </div>
 
 
-@* @section scripts{
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(document).ready(function () {
-            //llamar a datatable
-            $('#tblusuarios').datatable({
-                language: {
-                    "decimal": "",
-                    "emptytable": "no hay información",
-                    "info": "mostrando start a end de total entradas",
-                    "infoempty": "mostrando 0 to 0 of 0 entradas",
-                    "infofiltered": "(filtrado de max total entradas)",
-                    "infopostfix": "",
-                    "thousands": ",",
-                    "lengthmenu": "mostrar menu entradas",
-                    "loadingrecords": "cargando...",
-                    "processing": "procesando...",
-                    "search": "buscar:",
-                    "zerorecords": "sin resultados encontrados",
-                    "paginate": {
-                        "first": "primero",
-                        "last": "ultimo",
-                        "next": "siguiente",
-                        "previous": "anterior"
-                    }
+        // Función para confirmar la eliminación con SweetAlert2
+        function confirmDelete(button) {
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "Esta acción no se puede deshacer",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Buscar el formulario más cercano y enviarlo
+                    $(button).closest('form').submit();
                 }
             });
-
-    </script> *@
+        }
+    </script>
+}

@@ -2,6 +2,7 @@
 using Biblioteca.Models.Domain;
 using Biblioteca.Models.Servicios.IServices;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.Xml;
 
 namespace Biblioteca.Models.Servicios.Services
 {
@@ -37,7 +38,7 @@ namespace Biblioteca.Models.Servicios.Services
                 {
                     Nombre = req.Nombre,
                     UserName = req.UserName,
-                    Password = req.Password,
+                    Password = BCrypt.Net.BCrypt.HashPassword(req.Password),
                     FkRol = req.FkRol,
                 };
 
@@ -83,7 +84,7 @@ namespace Biblioteca.Models.Servicios.Services
 
                 usuario.Nombre = usuarioEdit.Nombre;
                 usuario.UserName = usuarioEdit.UserName;
-                usuario.Password = usuarioEdit.Password;
+                usuario.Password =  BCrypt.Net.BCrypt.HashPassword(usuarioEdit.Password);
                 usuario.FkRol = usuarioEdit.FkRol;
 
                 _context.Usuario.Update(usuario);
